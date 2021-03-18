@@ -4,6 +4,20 @@ $(function () {
     //   这个功能，后面其他的页面/模块还要用，所以必须设置为全局函数;
     getUserInfo();
 
+    //退出功能
+    let layer =layui.layer;
+    $('#btnLogout').on('click',function(e){
+    //阻止默认
+    layer.confirm('是否退出?', {icon: 3, title:'提示'},function(index){
+        //清空token
+        localStorage.removeItem('token')
+        //页面跳转
+        location.href="/login.html"
+        
+        layer.close(index)
+    })
+     })
+
 });
 
 
